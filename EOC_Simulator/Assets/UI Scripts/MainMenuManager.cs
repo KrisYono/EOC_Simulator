@@ -12,7 +12,7 @@ public class MainMenuManager : MonoBehaviour
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         // 找到按钮并绑定点击事件
-        startButton = root.Q<Button>("StartButton");
+        startButton = root.Q<Button>("Next");
         startButton.clicked += StartGame;
     }
 

@@ -2,4 +2,14 @@
 }
 
 .button {
+    transition-duration: 0.35s;
+}
+
+.button:hover {
+    scale: 1.1 1.1;
+    -unity-background-image-tint-color: rgb(236, 68, 54);
+    color: rgb(185, 34, 59);
+    -unity-background-scale-mode: stretch-to-fill;
+    background-color: rgba(238, 127, 127, 0);
+    background-image: none;
 }

@@ -7,9 +7,9 @@
 
 .button:hover {
     scale: 1.1 1.1;
-    -unity-background-image-tint-color: rgb(236, 68, 54);
-    color: rgb(185, 34, 59);
+    -unity-background-image-tint-color: rgb(15, 214, 53);
+    color: rgb(58, 214, 39);
     -unity-background-scale-mode: stretch-to-fill;
-    background-color: rgba(238, 127, 127, 0);
+    background-color: rgba(255, 255, 255, 0);
     background-image: none;
 }

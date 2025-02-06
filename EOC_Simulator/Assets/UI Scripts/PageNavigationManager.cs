@@ -6,11 +6,20 @@ public class PageNavigationManager : MonoBehaviour
 {
     private VisualElement mainMenu;
     private VisualElement choosingCharacter;
+    private VisualElement choosingScenario;
+    private VisualElement introduction;
+    private VisualElement phonePage;
     private Dictionary<string, VisualElement> positionInformationPanels;
+
 
     private Button startButton;
     private Button backToMainMenuButton;
     private Dictionary<string, Button> characterButtons;
+    private Button backToChoosingPage;
+    private Button gameStart;
+    private Button next;
+    private Button beginSimulatorButton;
+    private Button acceptButton;
 
     void Start()
     {
@@ -19,6 +28,9 @@ public class PageNavigationManager : MonoBehaviour
         // 获取 UI 元素
         mainMenu = root.Q<VisualElement>("MainMenu");
         choosingCharacter = root.Q<VisualElement>("ChoosingCharacter");
+        choosingScenario = root.Q<VisualElement>("ChoosingScenario");
+        introduction = root.Q<VisualElement>("Introduction");
+        phonePage = root.Q<VisualElement>("PhonePage");
 
         // 初始化 Position 信息面板
         positionInformationPanels = new Dictionary<string, VisualElement>
@@ -32,6 +44,11 @@ public class PageNavigationManager : MonoBehaviour
         // 获取按钮
         startButton = root.Q<Button>("StartButton");
         backToMainMenuButton = root.Q<Button>("BackToMainMenu");
+        backToChoosingPage = root.Q<Button>("BackToCharacterPage");
+        gameStart = root.Q<Button>("GameStart");
+        next = root.Q<Button>("Next");
+        beginSimulatorButton = root.Q<Button>("BeginSimulator");
+        acceptButton = root.Q<Button>("Accept");
 
         characterButtons = new Dictionary<string, Button>
         {
@@ -43,6 +60,11 @@ public class PageNavigationManager : MonoBehaviour
         // 绑定事件
         startButton.clicked += ShowChoosingCharacterPage;
         backToMainMenuButton.clicked += ShowMainMenu;
+        backToChoosingPage.clicked += ShowChoosingCharacterPage;
+        next.clicked += ShowChoosingScenario;
+        gameStart.clicked += ShowIntroduction;
+        beginSimulatorButton.clicked += ShowPhonePage;
+
 
         foreach (var character in characterButtons)
         {
@@ -53,6 +75,9 @@ public class PageNavigationManager : MonoBehaviour
     private void ShowChoosingCharacterPage()
     {
         mainMenu.style.display = DisplayStyle.None;
+        choosingScenario.style.display = DisplayStyle.None;
+        introduction.style.display = DisplayStyle.None;
+        phonePage.style.display = DisplayStyle.None;
         choosingCharacter.style.display = DisplayStyle.Flex;
 
         // 进入角色选择时隐藏所有 Position 信息
@@ -65,7 +90,14 @@ public class PageNavigationManager : MonoBehaviour
     private void ShowMainMenu()
     {
         choosingCharacter.style.display = DisplayStyle.None;
+
         mainMenu.style.display = DisplayStyle.Flex;
+
+        choosingScenario.style.display = DisplayStyle.None;
+
+        introduction.style.display = DisplayStyle.None;
+
+        phonePage.style.display = DisplayStyle.None;
     }
 
     private void ShowInformationOfPosition(string characterName)
@@ -81,5 +113,33 @@ public class PageNavigationManager : MonoBehaviour
         {
             positionInformationPanels[characterName].style.display = DisplayStyle.Flex;
         }
+    }
+
+    private void ShowChoosingScenario()
+    {
+        mainMenu.style.display = DisplayStyle.None;
+        choosingCharacter.style.display = DisplayStyle.None;
+        introduction.style.display = DisplayStyle.None;
+        phonePage.style.display = DisplayStyle.None;
+        choosingScenario.style.display = DisplayStyle.Flex;
+    }
+
+    private void ShowIntroduction()
+    {
+        mainMenu.style.display = DisplayStyle.None;
+        choosingCharacter.style.display = DisplayStyle.None;
+        choosingScenario.style.display = DisplayStyle.None;
+        phonePage.style.display = DisplayStyle.None;
+        introduction.style.display = DisplayStyle.Flex;
+    }
+
+    private void ShowPhonePage()
+    {
+
+        mainMenu.style.display = DisplayStyle.None;
+        choosingCharacter.style.display = DisplayStyle.None;
+        choosingScenario.style.display = DisplayStyle.None;
+        phonePage.style.display = DisplayStyle.Flex;
+        introduction.style.display = DisplayStyle.None;
     }
 }
